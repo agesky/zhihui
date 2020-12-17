@@ -1,2 +1,1 @@
-# zhihui
-# zhihui
+vip.conf是摘录网上的quantumultX重写规则进行一个整理，主要是破解vip以及去广告
