@@ -1,7 +1,7 @@
-/*******************************
+/******************************
 
 [rewrite_local]
-^https:\/\/www\.instapaper\.com\/api\/subscription_statusurl script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/instapaper.js
+^https:\/\/www\.instapaper\.com\/api\/subscription_status url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/instapaper.js
 
 [mitm]
 hostname = www.instapaper.com
