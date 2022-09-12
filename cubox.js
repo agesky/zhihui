@@ -1,8 +1,8 @@
 /*
 [rewrite_local]
-^https:\/\/www\.instapaper\.com\/api\/subscription_status url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/instapaper.js
+^https?:\/\/cubox\.pro\/.+ url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/cubox.js
 [mitm]
-hostname = www.instapaper.com
+hostname = cubox.pro
 */
 
 
