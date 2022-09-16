@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^ https://srmapp.com/purchases/validate* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/termuxl.js
+^https://srmapp.com/purchases/validate* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/termuxl.js
 [mitm]
 hostname = srmapp.com
 */
