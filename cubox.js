@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/cubox\.pro\/c\/api\/userInfo url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/cubox.js
+^https?:\/\/cubox\.pro\/c\/api\/userpay url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/cubox.js
 [mitm]
 hostname = cubox.pro
 */
