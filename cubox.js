@@ -7,9 +7,21 @@ hostname = cubox.pro
 
 
 var body = $response.body;
-var reg1 = /isExpire":\w+/g;
-var reg2 = /expireTime":"\w+/g;
-body = body.replace(reg1, 'isExpire":false');
-body = body.replace(reg2, 'expireTime":"2023');
+var url = $request.url;
+var obj = JSON.parse(body);
 
-$done(body);
+const vip = '/userInfo';
+
+
+if (url.indexOf(vip) != -1) {
+    obj.data.level = 1;
+    obj.data.expireTime = "2099-09-12T23:50:23+08:00";
+    obj.data.isExpire = false;
+    obj.data.active = true;
+    obj.data.payTime = 1660006006;
+
+	body = JSON.stringify(obj);
+}
+
+
+$done({body});
