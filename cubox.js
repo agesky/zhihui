@@ -10,7 +10,7 @@ var body = $response.body;
 var url = $request.url;
 var obj = JSON.parse(body);
 
-const vip = '/userInfo';
+const vip = '/userPay';
 
 
 if (url.indexOf(vip) != -1) {
