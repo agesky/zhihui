@@ -14,7 +14,7 @@ const vip = 'c=api4';
 
 
 if (url.indexOf(vip) != -1) {
-    obj.user.Vip_expire_time = "2099-10-01 00:00:00";
+    obj.user.vip_expire_time = "2099-10-01 00:00:00";
     obj.user.is_vip = 1;
 
 
