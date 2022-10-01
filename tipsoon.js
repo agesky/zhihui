@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/ios\.tipsoon\.com\/\?a\=getUserInfo* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/tipsoon.js
+^https?:\/\/ios\.tipsoon\.com\/\?a\=getUserInfo url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/tipsoon.js
 [mitm]
 hostname = tipsoon.com
 */
