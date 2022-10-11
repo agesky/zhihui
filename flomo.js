@@ -9,7 +9,7 @@ var body = $response.body;
 var url = $request.url;
 var obj = JSON.parse(body);
 
-const vip = 'api_key=flomoapp_ios';
+const vip = 'api_key=flomo_ios';
 
 
 if (url.indexOf(vip) != -1) {
