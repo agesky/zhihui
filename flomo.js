@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/flomoapp\.com\/api\/v1\/user\/me\? url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/flomo.js
+^https?:\/\/flomoapp\.com\/api\/v1\/user\/me url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/flomo.js
 [mitm]
 hostname = flomoapp.com
 */
