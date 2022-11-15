@@ -10,12 +10,13 @@ var body = $response.body;
 var obj = JSON.parse(body);
 
 
-
+｛
     obj.data.vip_expire_time = "2099-10-01 00:00:00";
     obj.data.is_vip = true;
     obj.data.is_red = 1;
 
     body = JSON.stringify(obj);
 
+｝
 
 $done({body});
