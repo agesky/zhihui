@@ -19,5 +19,4 @@ body = body.replace(reg3, 'membership" : true');
 body = body.replace(reg4, 'coins" : 999');
 body = body.replace(reg5, 'result" : true');
 
-body = JSON.stringify(obj); 
 $done(body);
