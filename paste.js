@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https:\/\/api\.itunes\.apphud\.com\/v1\/customers url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/paste.js
+^https:\/\/api\.apphud\.com\/v1\/(customers|subscriptions) url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/paste.js
 [mitm]
 hostname = api.apphud.com
 */
