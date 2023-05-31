@@ -16,7 +16,7 @@ obj = {
       "uuid" : "64b42c998",
       "banned" : "0",
       "headimgurl" : null,
-      "type" : "2",
+      "type" : "1",
       "wxunionid" : null,
       "token" : "00000000",
       "vipto" : "2025-05-31 10:50:16",
