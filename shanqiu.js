@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^http?:\/\/*.815616\.xyz\/api\/v2\/myinfo\/* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/shanqiu.js
+^http?:\/\/m.815616\.xyz\/api\/v2\/myinfo\/* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/shanqiu.js
 [mitm]
 hostname = 815616.xyz
 */
