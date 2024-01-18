@@ -10,7 +10,7 @@ var body = $response.body;
 var obj = JSON.parse(body);
 
 obj = {
-  "status" : "1",
+  "status" : "2",
   "data" : [
     {
       "uuid" : "64b42c998",
