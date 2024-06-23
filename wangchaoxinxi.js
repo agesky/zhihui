@@ -7,16 +7,6 @@ hostname = wangchaoxinxi.cn
 
 
 var body = $response.body;
-body = body.replace('else if(\"true\" == \"true\"){
-		layer.open({
-			  title:\'微信群通知\',
-			  type: 1,
-			  content: $(\'#tssfPayDiv\'),
-			  shade: [0.6, \'#393D49\'],
-			  anim: 6,
-			  closeBtn:0,
-			  area: [\'90%\', \'auto\'],
-			  zIndex:99999999
-			});
-	}', '');
-$done({body});
+var regex = /else if\("true" == "true"\)\s*\{\s*layer\.open\(\{[^]*?\}\);/g;
+var modifiedBody = body.replace(regex, '');
+$done({body: modifiedBody});
