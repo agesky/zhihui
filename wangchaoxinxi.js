@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https:\/\/wangchaoxinxi\.cn\/wechat\/i\/？ url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/wangchaoxinxi.js
+^https:\/\/wangchaoxinxi\.cn\/wechat\/i\/* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/wangchaoxinxi.js
 [mitm]
 hostname = wangchaoxinxi.cn
 */
