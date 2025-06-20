@@ -1,6 +1,12 @@
 /**
  * @fileoverview Weidian Cookie 获取脚本
  */
+/*
+[rewrite_local]
+^https:\/\/h5.weidian\.com\/m\/member\-sign\-activity\/* url script-response-body https://raw.githubusercontent.com/agesky/zhihui/master/weidian_cookie.js
+[mitm]
+hostname = *.weidian.com
+*/
 
 if ($request.headers["Cookie"]) {
   const cookie = $request.headers["Cookie"];
