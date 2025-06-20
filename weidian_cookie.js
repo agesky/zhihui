@@ -3,7 +3,7 @@
  */
 /*
 [rewrite_local]
-^https:\/\/*\.weidian\.com\/* script-request-header https://raw.githubusercontent.com/agesky/zhihui/master/weidian_cookie.js
+^https:\/\/*\.weidian\.com\/* url script-request-header https://raw.githubusercontent.com/agesky/zhihui/master/weidian_cookie.js
 [mitm]
 hostname = *.weidian.com
 */
