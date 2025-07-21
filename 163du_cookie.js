@@ -11,6 +11,7 @@ hostname = du.163.com
 
 // 功能：自动捕获并更新网易读书Cookie
 if ($request.url.includes("du.163.com") && $request.headers.Cookie) {
+    $notify("开始", "");
     const domain = "163du"; // 存储标识
     const currentCookie = $request.headers.Cookie;
     const storedCookie = $prefs.valueForKey(domain);
