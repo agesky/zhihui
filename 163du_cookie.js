@@ -1,7 +1,7 @@
 /*
 [rewrite_local]
 # 网易读书Cookie捕获
-^https?://du\.163\.com\/login\/token url script-request-header https://raw.githubusercontent.com/agesky/zhihui/master/163du_cookie.js
+^https?://du.163.com/activity/201907/activityCenter/sign.json url script-request-header https://raw.githubusercontent.com/agesky/zhihui/master/163du_cookie.js
 
 [mitm]
 # 必需的主机名
