@@ -3,7 +3,6 @@
 # 网易读书Cookie捕获
 ^https?://du\.163\.com\/login\/token url script-request-header https://raw.githubusercontent.com/agesky/zhihui/master/163du_cookie.js
 
-
 [mitm]
 # 必需的主机名
 hostname = du.163.com
@@ -12,14 +11,14 @@ hostname = du.163.com
 // 功能：自动捕获并更新网易读书cookie
 const domain = "163du";
 
-// 1. 检查并更新 Cookie
-if ($request.url.includes("du.163.com") && $request.headers) {
+// 判断 $request 是否存在，增强兼容性
+if (typeof $request !== "undefined" && $request.url.includes("du.163.com") && $request.headers) {
     const currentCookie = $request.headers.Cookie || $request.headers.cookie;
     const storedCookie = $prefs.valueForKey(domain);
-    
+
     if (currentCookie && (!storedCookie || currentCookie !== storedCookie)) {
         $prefs.setValueForKey(currentCookie, domain);
-        // 2. 立即提取并存储 XSRF
+        // 提取并存储 XSRF
         const xsrfValue = getXSRF(currentCookie);
         if (xsrfValue) {
             $prefs.setValueForKey(xsrfValue, domain + "_xsrf");
@@ -30,7 +29,7 @@ if ($request.url.includes("du.163.com") && $request.headers) {
     }
 }
 
-// 3. XSRF 提取函数
+// XSRF 提取函数
 function getXSRF(cookieStr) {
     if (!cookieStr) return null;
     const cookies = cookieStr.split('; ');
@@ -43,4 +42,3 @@ function getXSRF(cookieStr) {
 }
 
 $done({});
-
