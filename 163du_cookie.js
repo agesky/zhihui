@@ -9,43 +9,38 @@
 hostname = du.163.com
 */
 
-// 功能：自动捕获并更新网易读书Cookie
-if ($request.url.includes("du.163.com") && $request.headers.Cookie) {
-    $notify("开始", "");
-    const domain = "163du"; // 存储标识
-    const currentCookie = $request.headers.Cookie;
+// 功能：自动捕获并更新网易读书cookie
+const domain = "163du";
+
+// 1. 检查并更新 Cookie
+if ($request.url.includes("du.163.com") && $request.headers) {
+    const currentCookie = $request.headers.Cookie || $request.headers.cookie;
     const storedCookie = $prefs.valueForKey(domain);
     
-    // 检查Cookie是否需要更新
-    if (!storedCookie || currentCookie !== storedCookie) {
+    if (currentCookie && (!storedCookie || currentCookie !== storedCookie)) {
         $prefs.setValueForKey(currentCookie, domain);
-        $notify("网易读书Cookie更新", "✅ 成功获取最新Cookie", "");
+        // 2. 立即提取并存储 XSRF
+        const xsrfValue = getXSRF(currentCookie);
+        if (xsrfValue) {
+            $prefs.setValueForKey(xsrfValue, domain + "_xsrf");
+            $notify("网易读书更新", "✅ Cookie & XSRF 已更新", `XSRF: ${xsrfValue}`);
+        } else {
+            $notify("网易读书更新", "✅ Cookie 已更新", "⚠️ 未提取到 XSRF");
+        }
     }
-    console.log(`网易读书Cookie已${storedCookie ? "更新" : "初始化"}`);
+}
 
-
-// 获取cookie中_xsrf的值
+// 3. XSRF 提取函数
 function getXSRF(cookieStr) {
     if (!cookieStr) return null;
     const cookies = cookieStr.split('; ');
     for (const cookie of cookies) {
-        if (cookie.startsWith('_xsrf=')) {
-            return cookie.split('=')[1]; // 返回 _xsrf 的值
+        if (cookie.trim().startsWith('_xsrf=')) {
+            return cookie.split('=')[1].trim();
         }
     }
-    return null; // 未找到时返回 null
+    return null;
 }
 
-// 取-xsrf值
-const cookie = $prefs.valueForKey("163du");
-// $notify("当前Cookie", cookie || "未获取到Cookie");
-const xsrfValue = getXSRF(cookie);
-    
-// 存储到 Quantumult X 的持久化存储
-if (xsrfValue) {
-    $prefs.setValueForKey(xsrfValue, "163du_xsrf"); // 存储为 "163du_xsrf"
-    $notify("网易读书 XSRF 更新", `值: ${xsrfValue}`);
-} else {
-    $notify("⚠️ 提取失败", "未找到 _xsrf 字段");
-}
 $done({});
+
