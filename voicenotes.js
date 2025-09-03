@@ -41,6 +41,12 @@ else if (url.includes("api.voicenotes.com/api/auth/me")) {
   obj.subscription_gateway = "revenuecat";
 }
 
+// === 针对 VoiceNotes ===
+else if (url.includes("api.voicenotes.com/api/auth/details")) {
+  obj.usage.subscription_plan = "pro";               // 原本可能是 null / Free Trial
+  obj.usage.subscription_status = true;                    // 修改为 true
+}
+
 // 输出修改后的响应
 body = JSON.stringify(obj);
 $done({ body });
