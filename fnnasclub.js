@@ -262,7 +262,11 @@ if (typeof $response !== 'undefined' && $response && $request) {
     }
   }
   
-  $done && $done({});
+  $done({ 
+  body: $response.body,
+  headers: $response.headers,
+  status: $response. status || 200
+});
 } else if (typeof $task !== 'undefined') {
   // Quantumult X 定时任务入口
   mainTask();
