@@ -6,7 +6,7 @@
 3. 获取打卡动态信息
 
 [rewrite_local]
-^https: \/\/club\. fnnas\.com\/plugin\. php\?id=zqlj_sign script-response-header https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/fnnasclub.js
+^https:\/\/club\.fnnas\.com\/plugin\.php\?id=zqlj_sign script-response-header https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/fnnasclub.js
 
 [mitm]
 hostname = club.fnnas.com
