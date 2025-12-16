@@ -4,15 +4,11 @@
 1. 自动抓取并保存 Cookie（在浏览器访问页面时自动获取）
 2. 执行定时签到（每天自动打卡）
 3. 获取打卡动态信息
+[rewrite_local]安^https: \/\/club\. fnnas\.com\/plugin\. php\?id=zqlj_sign script-response-header https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/fnnasclub.js
 
-安装方式：
-1. 在 Quantumult X 的 rewrite_local 中添加：
-   https: \/\/club\. fnnas\.com\/plugin\. php\?id=zqlj_sign script-response-header fnnasclub_quantumultx.js
-   
-2. 在 Quantumult X 的 task_local 中添加定时任务：
-   0 9 * * * script-path=fnnasclub_quantumultx.js, tag=飞牛Nas论坛签到
+[mitm]
+hostname = club.fnnas.com
 
-3. 将此文件保存到 Quantumult X 的脚本目录
 */
 
 const COOKIE_KEY = 'fnnasclub_cookie';
