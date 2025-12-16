@@ -6,7 +6,7 @@
 3. 获取打卡动态信息
 
 [rewrite_local]
-^https:\/\/club\.fnnas\.com\/plugin\.php\?id=zqlj_sign script-response-header https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/fnnasclub.js
+^https:\/\/club\.fnnas\.com\/plugin\.php\?id=zqlj_sign script-response-body https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/fnnasclub.js
 
 [mitm]
 hostname = club.fnnas.com
@@ -27,7 +27,7 @@ const notify = (title, subtitle, message) => {
   if (isQX) {
     $notify(title, subtitle, message);
   } else if (isSurge) {
-    $notification. post(title, subtitle, message);
+    $notification.post(title, subtitle, message);
   } else if (isNode) {
     console.log(`[${title}] ${subtitle}\n${message}`);
   }
@@ -40,7 +40,7 @@ const storeWrite = (key, val) => {
   if (isNode) {
     const fs = require('fs');
     try {
-      const path = '. /. fnnasclub_store.json';
+      const path = './.fnnasclub_store.json';
       let obj = {};
       if (fs.existsSync(path)) obj = JSON.parse(fs.readFileSync(path));
       obj[key] = val;
@@ -61,7 +61,7 @@ const storeRead = (key) => {
     try {
       const path = './.fnnasclub_store.json';
       if (! fs.existsSync(path)) return null;
-      const obj = JSON. parse(fs.readFileSync(path));
+      const obj = JSON.parse(fs.readFileSync(path));
       return obj[key];
     } catch (e) {
       console.error('存储读取失败:', e);
@@ -104,11 +104,11 @@ const joinCookieFromSetCookie = (setCookie) => {
   if (!setCookie) return '';
   if (Array.isArray(setCookie)) {
     return setCookie
-      .map((s) => (typeof s === 'string' ? s. split(';')[0] : ''))
+      .map((s) => (typeof s === 'string' ? s.split(';')[0] : ''))
       .filter(Boolean)
       .join('; ');
   } else if (typeof setCookie === 'string') {
-    const parts = setCookie.split(/,(? =[^;]+=)/);
+    const parts = setCookie.split(/,(?=[^;]+=)/);
     return parts.map((s) => s.split(';')[0]).filter(Boolean).join('; ');
   }
   return '';
@@ -133,7 +133,7 @@ const doSign = async (cookie) => {
   const headers = {
     'User-Agent': USER_AGENT,
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-    'Referer': 'https://club.fnnas.com/portal. php',
+    'Referer': 'https://club.fnnas.com/portal.php',
     'Content-Type': 'text/html; charset=utf-8',
     'Cookie':  cookie,
   };
@@ -185,7 +185,7 @@ const getInfo = async (cookie) => {
       return [{ name: '获取打卡动态失败', value: '无法请求页面' }];
     }
     
-    const html = resp. body;
+    const html = resp.body;
     
     // 匹配"我的打卡动态"区块
     const m = html.match(/<strong>\s*我的打卡动态\s*<\/strong>[\s\S]*?<div[^>]*class="bm_c"[^>]*>[\s\S]*?<\/div>/);
@@ -212,7 +212,7 @@ const getInfo = async (cookie) => {
       else return;
       
       const parts = line.split(sep);
-      const name = parts. shift().trim();
+      const name = parts.shift().trim();
       const value = parts.join(sep).trim();
       
       if (name && value) {
@@ -220,7 +220,7 @@ const getInfo = async (cookie) => {
       }
     });
     
-    return msg. length ?  msg : [{ name: '打卡动态', value: '未解析到内容' }];
+    return msg.length ?  msg : [{ name: '打卡动态', value: '未解析到内容' }];
   } catch (e) {
     return [{ name: '获取打卡动态失败', value:  e.message }];
   }
@@ -258,14 +258,14 @@ if (typeof $response !== 'undefined' && $response && $request) {
     const cookie = joinCookieFromSetCookie(setCookie);
     if (cookie) {
       storeWrite(COOKIE_KEY, cookie);
-      notify('飞牛Nas论坛', 'Cookie 已保存', cookie. substring(0, 50) + '...');
+      notify('飞牛Nas论坛', 'Cookie 已保存', cookie.substring(0, 50) + '...');
     }
   }
   
   $done({ 
   body: $response.body,
   headers: $response.headers,
-  status: $response. status || 200
+  status: $response.status || 200
 });
 } else if (typeof $task !== 'undefined') {
   // Quantumult X 定时任务入口
