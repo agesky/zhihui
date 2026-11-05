@@ -2,10 +2,10 @@
  * 学科网 (zxxk.com) 自动获取 Cookie & 定时签到脚本
  * 
  * [rewrite_local]
- * ^https:\/\/user\.zxxk\.com\/task\/(signin|user-task) url script-request-header zxxk_sign.js
+ * ^https:\/\/user\.zxxk\.com\/task\/(signin|user-task) url script-request-header https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/zxxk_sign.js
  * 
  * [task_local]
- * 30 8 * * * zxxk_sign.js, tag=学科网签到, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Task.png, enabled=true
+ * 30 8 * * * https://raw.githubusercontent.com/agesky/zhihui/refs/heads/master/zxxk_sign.js, tag=学科网签到, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Task.png, enabled=true
  * 
  * [mitm]
  * hostname = user.zxxk.com
